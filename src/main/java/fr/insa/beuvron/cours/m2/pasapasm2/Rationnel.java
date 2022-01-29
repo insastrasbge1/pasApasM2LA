@@ -16,7 +16,7 @@
  You should have received a copy of the GNU General Public License
  along with CoursBeuvron.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.insa.beuvron.cours.m2.pasapasm2la;
+package fr.insa.beuvron.cours.m2.pasapasm2;
 
 import fr.insa.beuvron.recup.Lire;
 
