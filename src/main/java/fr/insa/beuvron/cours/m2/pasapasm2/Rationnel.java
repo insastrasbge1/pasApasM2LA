@@ -41,7 +41,7 @@ import fr.insa.beuvron.recup.Lire;
  * d'illustrer la définition de classes simple en Java, avec des méthodes static
  * et non static. Une implantation moins limitée utiliserai sans doute des
  * entier de taille arbitraire définis dans java.math.BigInteger. Ici, on se
- * contente d'utiliser des long
+ * contente d'utiliser des long 
  *
  * @author F. de Beuvron (INSA Strasbourg)
  *
