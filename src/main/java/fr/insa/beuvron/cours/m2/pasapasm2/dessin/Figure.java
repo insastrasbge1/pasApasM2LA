@@ -8,7 +8,11 @@ package fr.insa.beuvron.cours.m2.pasapasm2.dessin;
  *
  * @author francois
  */
-public class Figure {
+public abstract class Figure {
+    
+    private Groupe contenuDans;
+    
+    public abstract double distancePoint(Point p) ;
     
         public static void main(String[] args) {
         Point p1,p2;
@@ -19,6 +23,20 @@ public class Figure {
        p2 = p1;
         p1.setPx(4);
      }
+
+    /**
+     * @return the contenuDans
+     */
+    public Groupe getContenuDans() {
+        return contenuDans;
+    }
+
+    /**
+     * @param contenuDans the contenuDans to set
+     */
+    public void setContenuDans(Groupe contenuDans) {
+        this.contenuDans = contenuDans;
+    }
 
     
 }

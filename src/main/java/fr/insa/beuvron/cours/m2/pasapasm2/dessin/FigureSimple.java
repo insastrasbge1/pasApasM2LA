@@ -11,7 +11,7 @@ import java.awt.Color;
  *
  * @author francois
  */
-public class FigureSimple extends Figure{
+public abstract class FigureSimple extends Figure{
     
     private Color couleur;
 
@@ -35,6 +35,7 @@ public class FigureSimple extends Figure{
         this.couleur = couleur;
     }
     
+ 
     
     
 }
