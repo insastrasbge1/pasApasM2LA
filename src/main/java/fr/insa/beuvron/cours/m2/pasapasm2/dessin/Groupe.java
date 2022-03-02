@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author francois
+ * @author francois 
  */
 public class Groupe extends Figure{
     
