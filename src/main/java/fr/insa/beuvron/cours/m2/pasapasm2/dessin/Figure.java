@@ -12,6 +12,13 @@ public abstract class Figure {
     
     private Groupe contenuDans;
     
+    public abstract double maxX();
+    public abstract double minX();
+    
+    public double largeur() {
+        return this.maxX() - this.minX();
+    }
+    
     public abstract double distancePoint(Point p) ;
     
         public static void main(String[] args) {

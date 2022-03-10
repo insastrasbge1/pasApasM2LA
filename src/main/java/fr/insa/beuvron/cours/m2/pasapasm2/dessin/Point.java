@@ -44,9 +44,10 @@ public class Point extends FigureSimple {
         this.px = px;
     }
 
-    public String toString() {
-        return "(" + this.px + "," + this.py + ")";
-    }
+//    @Override
+//    public String toString() {
+//        return "(" + this.px + "," + this.py + ")";
+//    }
 
     public static void main(String[] args) {
         Point p1, p2;
@@ -75,6 +76,16 @@ public class Point extends FigureSimple {
      */
     public void setPy(double py) {
         this.py = py;
+    }
+
+    @Override
+    public double maxX() {
+        return this.px;
+     }
+
+    @Override
+    public double minX() {
+        return this.px;
     }
 
 }

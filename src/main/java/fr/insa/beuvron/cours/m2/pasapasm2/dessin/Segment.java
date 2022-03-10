@@ -10,19 +10,18 @@ import java.awt.Color;
  *
  * @author francois
  */
-public class Segment extends FigureSimple{
-    
+public class Segment extends FigureSimple {
+
     private Point debut;
     private Point fin;
-    
-    
-    public Segment(Point debut,Point fin,Color c) {
+
+    public Segment(Point debut, Point fin, Color c) {
         super(c);
         this.debut = debut;
         this.fin = fin;
     }
-    
-        @Override
+
+    @Override
     public double distancePoint(Point p) {
         double x1 = this.debut.getPx();
         double y1 = this.debut.getPy();
@@ -57,5 +56,14 @@ public class Segment extends FigureSimple{
         return fin;
     }
 
+    @Override
+    public double maxX() {
+        return Math.max(this.debut.maxX(), this.fin.maxX());
+    }
+
+    @Override
+    public double minX() {
+        return Math.min(this.debut.minX(), this.fin.minX());
+    }
 
 }
