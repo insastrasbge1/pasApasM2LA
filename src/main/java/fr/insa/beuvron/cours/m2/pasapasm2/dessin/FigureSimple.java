@@ -4,7 +4,7 @@
  */
 package fr.insa.beuvron.cours.m2.pasapasm2.dessin;
 
-import java.awt.Color;
+import javafx.scene.paint.Color;
 
 
 /**

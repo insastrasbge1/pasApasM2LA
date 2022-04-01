@@ -4,7 +4,8 @@
  */
 package fr.insa.beuvron.cours.m2.pasapasm2.dessin;
 
-import java.awt.Color;
+import javafx.scene.paint.Color;
+
 
 /**
  *
@@ -20,7 +21,7 @@ public class Point extends FigureSimple {
     }
 
     public Point(double px, double py) {
-        this(px, py, new Color(0, 0, 0));
+        this(px, py, new Color(0, 0, 0,1));
     }
 
     public Point(double px, double py, Color c) {
