@@ -42,38 +42,22 @@ public class CoucouPanel extends BorderPane {
         this.setCenter(this.messages);
         
         this.bCoucou = new Button("Coucou");
-        this.bSalut = new Button("Salut");
-        this.boutons = new HBox();
-        this.boutons.getChildren().add(this.bCoucou);
-        this.boutons.getChildren().add(this.bSalut);
-        this.setBottom(this.boutons);
         
         this.bCoucou.setOnAction((t) -> {
             String nom = this.tfNom.getText();
             this.messages.appendText("coucou " + nom + "\n");
         });
-        
-        this.bSalut.setOnAction((t) -> {
+        this.bSalut = new Button("Salut");
+       this.bSalut.setOnAction((t) -> {
             String nom = this.tfNom.getText();
-            this.messages.appendText("salut " + nom + "\n");
+            this.messages.appendText("coucou " + nom + "\n");
         });
+         this.boutons = new HBox();
+        this.boutons.getChildren().add(this.bCoucou);
+        this.boutons.getChildren().add(this.bSalut);
+        this.setBottom(this.boutons);
         
-        this.bCoucou.setOnMouseEntered((t) -> {
-            this.bSalut.setStyle("-fx-background-color: #ff0000;");
-        });
-        
-        this.bCoucou.setOnMouseExited((t) -> {
-            this.bSalut.setStyle("");
-        });
-        
-        this.bSalut.setOnMouseEntered((t) -> {
-            this.bCoucou.setStyle("-fx-background-color: #00ff00;");
-        });
-        
-        this.bSalut.setOnMouseExited((t) -> {
-            this.bCoucou.setStyle("");
-        });
-        
+ 
     }
     
 }
