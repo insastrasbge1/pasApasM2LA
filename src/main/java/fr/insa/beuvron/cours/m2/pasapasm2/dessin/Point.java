@@ -4,7 +4,9 @@
  */
 package fr.insa.beuvron.cours.m2.pasapasm2.dessin;
 
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
 
 
 /**
@@ -12,6 +14,8 @@ import javafx.scene.paint.Color;
  * @author francois
  */
 public class Point extends FigureSimple {
+    
+    public static final double TAILLE_POINT = 5;
 
     private double px;
     private double py;
@@ -88,5 +92,14 @@ public class Point extends FigureSimple {
     public double minX() {
         return this.px;
     }
+
+    @Override
+    public Group dessine() {
+        Ellipse pt = new Ellipse(this.px, this.py, TAILLE_POINT, TAILLE_POINT);
+        pt.setStroke(this.getCouleur());
+        pt.setFill(this.getCouleur());
+        Group res = new Group(pt);
+        return res;
+     }
 
 }

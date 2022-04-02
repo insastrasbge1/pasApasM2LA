@@ -4,9 +4,12 @@
  */
 package fr.insa.beuvron.cours.m2.pasapasm2.dessin;
 
+import static fr.insa.beuvron.cours.m2.pasapasm2.dessin.Point.TAILLE_POINT;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
 
 /**
  *
@@ -99,5 +102,13 @@ public class Groupe extends Figure {
         f.setContenuDans(this);
     }
 
+   @Override
+    public Group dessine() {
+        Group res = new Group();
+        for(int i = 0 ; i < this.contient.size() ;  i++) {
+            res.getChildren().add(this.contient.get(i).dessine());
+        }
+        return res;
+     }
 
 }

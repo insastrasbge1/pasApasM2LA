@@ -4,8 +4,11 @@
  */
 package fr.insa.beuvron.cours.m2.pasapasm2.dessin;
 
+import static fr.insa.beuvron.cours.m2.pasapasm2.dessin.Point.TAILLE_POINT;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
-
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Line;
 
 /**
  *
@@ -65,6 +68,16 @@ public class Segment extends FigureSimple {
     @Override
     public double minX() {
         return Math.min(this.debut.minX(), this.fin.minX());
+    }
+
+    @Override
+    public Group dessine() {
+        Line li = new Line(this.getDebut().getPx(), this.getDebut().getPy(),
+                this.getFin().getPx(), this.getFin().getPy());
+         li.setStroke(this.getCouleur());
+        li.setFill(this.getCouleur());
+       Group res = new Group(li);
+        return res;
     }
 
 }
