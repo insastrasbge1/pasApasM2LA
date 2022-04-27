@@ -14,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 public class MainPane extends BorderPane {
     
     private Groupe model;
+    private Controleur control;
     
     private OutilsTop entete;
     private OutilsLeft barreGauche;
@@ -21,9 +22,10 @@ public class MainPane extends BorderPane {
     
     public MainPane(Groupe model) {
         this.model = model;
+        this.control = new Controleur(this);
         
         this.entete = new OutilsTop();
-        this.barreGauche = new OutilsLeft();
+        this.barreGauche = new OutilsLeft(this);
         this.dessin = new DessinPane(this);
         
         this.setTop(this.entete);
@@ -36,6 +38,13 @@ public class MainPane extends BorderPane {
      */
     public Groupe getModel() {
         return model;
+    }
+
+    /**
+     * @return the control
+     */
+    public Controleur getControl() {
+        return control;
     }
     
 }

@@ -4,12 +4,10 @@
  */
 package fr.insa.beuvron.cours.m2.pasapasm2.dessin;
 
-import static fr.insa.beuvron.cours.m2.pasapasm2.dessin.Point.TAILLE_POINT;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Ellipse;
 
 /**
  *
@@ -41,10 +39,38 @@ public class Groupe extends Figure {
 
     }
 
-    //TODO
     @Override
     public double distancePoint(Point p) {
-        return 0;
+        if (this.contient.isEmpty()) {
+            return Double.MAX_VALUE;
+        } else {
+            double res = this.contient.get(0).distancePoint(p);
+            for (int i = 1; i < this.contient.size(); i++) {
+                double cur = this.contient.get(i).distancePoint(p);
+                if (cur < res) {
+                    res = cur;
+                }
+            }
+            return res;
+        }
+    }
+
+    public Figure plusProcheSousFigure(Point p) {
+        if (this.contient.isEmpty()) {
+            return null;
+        } else {
+            Figure res = this.contient.get(0);
+            double resD = res.distancePoint(p);
+            for (int i = 1; i < this.contient.size(); i++) {
+                Figure cur = this.contient.get(i);
+                double curD = cur.distancePoint(p);
+                if (curD < resD) {
+                    res = cur;
+                    resD = curD;
+                }
+            }
+            return res;
+        }
     }
 
     @Override
@@ -54,7 +80,7 @@ public class Groupe extends Figure {
             return 0;
         } else {
             double max = this.contient.get(0).maxX();
-            for(int i = 1 ; i < this.contient.size() ; i ++) {
+            for (int i = 1; i < this.contient.size(); i++) {
                 double cur = this.contient.get(i).maxX();
                 if (cur > max) {
                     max = cur;
@@ -66,12 +92,12 @@ public class Groupe extends Figure {
 
     @Override
     public double minX() {
-       if (this.contient.size() == 0) {
+        if (this.contient.size() == 0) {
 //            throw new Error("groupe vide pas de maxX");
             return 0;
         } else {
             double min = this.contient.get(0).minX();
-            for(int i = 1 ; i < this.contient.size() ; i ++) {
+            for (int i = 1; i < this.contient.size(); i++) {
                 double cur = this.contient.get(i).minX();
                 if (cur < min) {
                     min = cur;
@@ -80,15 +106,20 @@ public class Groupe extends Figure {
             return min;
         }
     }
+
     public static Groupe groupeAlea(int nbrPoint, int nbrSegment) {
         Groupe res = new Groupe();
         for (int i = 0; i < nbrPoint; i++) {
-            res.addFigure(new Point(Math.random() * 400, Math.random() * 300,
+            res.addFigure(new Point(Math.random() * 400-50,
+                    Math.random() * 300-50,
                     new Color(Math.random(), Math.random(), Math.random(), 1)));
         }
         for (int i = 0; i < nbrSegment; i++) {
-            res.addFigure(new Segment(new Point(Math.random() * 400, Math.random() * 300),
-                    new Point(Math.random() * 400, Math.random() * 300),
+            res.addFigure(new Segment(
+                    new Point(Math.random() * 400-50,
+                            Math.random() * 300-50),
+                    new Point(Math.random() * 400-50,
+                            Math.random() * 300-50),
                     new Color(Math.random(), Math.random(), Math.random(), 1)));
         }
         return res;
@@ -102,13 +133,13 @@ public class Groupe extends Figure {
         f.setContenuDans(this);
     }
 
-   @Override
+    @Override
     public Group dessine() {
         Group res = new Group();
-        for(int i = 0 ; i < this.contient.size() ;  i++) {
+        for (int i = 0; i < this.contient.size(); i++) {
             res.getChildren().add(this.contient.get(i).dessine());
         }
         return res;
-     }
+    }
 
 }
