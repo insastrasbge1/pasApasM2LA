@@ -60,7 +60,7 @@ public abstract class Figure {
     }
 
     public static void testConversion() {
-        while (true) {
+        while (true) { 
             System.out.println("entrez un nombre : ");
             String s = Lire.S();
             double d = 0;
