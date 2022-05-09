@@ -5,6 +5,8 @@
 package fr.insa.beuvron.cours.m2.pasapasm2.dessin;
 
 import static fr.insa.beuvron.cours.m2.pasapasm2.dessin.Point.TAILLE_POINT;
+import java.io.IOException;
+import java.io.Writer;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
@@ -74,10 +76,16 @@ public class Segment extends FigureSimple {
     public Group dessine() {
         Line li = new Line(this.getDebut().getPx(), this.getDebut().getPy(),
                 this.getFin().getPx(), this.getFin().getPy());
-         li.setStroke(this.getCouleur());
+        li.setStroke(this.getCouleur());
         li.setFill(this.getCouleur());
-       Group res = new Group(li);
+        Group res = new Group(li);
         return res;
+    }
+
+    @Override
+    public void save(Writer out) throws IOException {
+        out.append("SEGMENT;" + this.debut.getPx() + ";" + this.debut.getPy() + ";"
+                + this.fin.getPx() + ";" + this.fin.getPy()+"\n");
     }
 
 }

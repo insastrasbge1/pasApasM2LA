@@ -4,6 +4,8 @@
  */
 package fr.insa.beuvron.cours.m2.pasapasm2.dessin;
 
+import java.io.IOException;
+import java.io.Writer;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
@@ -101,5 +103,10 @@ public class Point extends FigureSimple {
         Group res = new Group(pt);
         return res;
      }
+
+    @Override
+    public void save(Writer out) throws IOException {
+        out.append("POINT;"+ this.px + ";" + this.py+"\n");
+    }
 
 }

@@ -4,6 +4,8 @@
  */
 package fr.insa.beuvron.cours.m2.pasapasm2.dessin;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Group;
@@ -14,21 +16,21 @@ import javafx.scene.paint.Color;
  * @author francois
  */
 public class Groupe extends Figure {
-
+    
     private List<Figure> contient;
-
+    
     public List<Figure> getContient() {
         return this.contient;
     }
-
+    
     public Groupe(List<Figure> lf) {
         this.contient = lf;
     }
-
+    
     public Groupe() {
         this(new ArrayList<Figure>());
     }
-
+    
     public void ajoute(Figure f) {
         if (f.getContenuDans() != null) {
             throw new Error("figure " + f + " déjà dans groupe "
@@ -36,9 +38,9 @@ public class Groupe extends Figure {
         }
         this.contient.add(f);
         f.setContenuDans(this);
-
+        
     }
-
+    
     @Override
     public double distancePoint(Point p) {
         if (this.contient.isEmpty()) {
@@ -54,7 +56,7 @@ public class Groupe extends Figure {
             return res;
         }
     }
-
+    
     public Figure plusProcheSousFigure(Point p) {
         if (this.contient.isEmpty()) {
             return null;
@@ -72,7 +74,7 @@ public class Groupe extends Figure {
             return res;
         }
     }
-
+    
     @Override
     public double maxX() {
         if (this.contient.size() == 0) {
@@ -89,7 +91,7 @@ public class Groupe extends Figure {
             return max;
         }
     }
-
+    
     @Override
     public double minX() {
         if (this.contient.size() == 0) {
@@ -106,25 +108,25 @@ public class Groupe extends Figure {
             return min;
         }
     }
-
+    
     public static Groupe groupeAlea(int nbrPoint, int nbrSegment) {
         Groupe res = new Groupe();
         for (int i = 0; i < nbrPoint; i++) {
-            res.addFigure(new Point(Math.random() * 400-50,
-                    Math.random() * 300-50,
+            res.addFigure(new Point(Math.random() * 400 - 50,
+                    Math.random() * 300 - 50,
                     new Color(Math.random(), Math.random(), Math.random(), 1)));
         }
         for (int i = 0; i < nbrSegment; i++) {
             res.addFigure(new Segment(
-                    new Point(Math.random() * 400-50,
-                            Math.random() * 300-50),
-                    new Point(Math.random() * 400-50,
-                            Math.random() * 300-50),
+                    new Point(Math.random() * 400 - 50,
+                            Math.random() * 300 - 50),
+                    new Point(Math.random() * 400 - 50,
+                            Math.random() * 300 - 50),
                     new Color(Math.random(), Math.random(), Math.random(), 1)));
         }
         return res;
     }
-
+    
     public void addFigure(Figure f) {
         if (f.getContenuDans() != null) {
             throw new Error("figure déjà dans groupe");
@@ -132,7 +134,7 @@ public class Groupe extends Figure {
         this.getContient().add(f);
         f.setContenuDans(this);
     }
-
+    
     @Override
     public Group dessine() {
         Group res = new Group();
@@ -141,5 +143,12 @@ public class Groupe extends Figure {
         }
         return res;
     }
-
+    
+    @Override
+    public void save(Writer out) throws IOException {
+        for (int i = 0; i < this.contient.size(); i++) {
+            this.contient.get(i).save(out);
+        }
+    }
+    
 }
